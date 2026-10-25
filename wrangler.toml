@@ -1,0 +1,22 @@
+name = "reminder-bot"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+# Запуск рассылки раз в минуту
+[triggers]
+crons = ["* * * * *"]
+
+# База данных D1. database_id вставь из вывода команды: npx wrangler d1 create reminders
+[[d1_databases]]
+binding = "DB"
+database_name = "reminders"
+database_id = "3c8a342b-4550-4e4a-8351-f8a14aca0922"
+
+# Логи в панели Cloudflare (Workers -> reminder-bot -> Logs)
+[observability]
+enabled = true
+
+# Если хочешь, чтобы ботом пользовался только ты, раскомментируй и впиши свой ID
+# (бот покажет его по команде /start). Несколько ID - через запятую.
+# [vars]
+# ALLOWED_USERS = "123456789"
